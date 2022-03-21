@@ -456,7 +456,7 @@ section .title::after {
   max-height: 225px;
   max-width: 400px;
   object-fit: cover;
-  border: 5px solid #ffcc66;
+  border-radius: 3px;
   transition: all 0.3s ease;
 }
 
