@@ -12,19 +12,19 @@ const scrollHeader = () => {
 window.addEventListener('scroll', scrollHeader);
 
 //------ SCROLL REVEAL ANIMATION ------//
-const sr = ScrollReveal({
-  origin: 'top',
-  distance: '60px',
-  duration: 2000,
-  delay: 400,
-  reset: false,
-});
+//const sr = ScrollReveal({
+//  origin: 'top',
+//  distance: '60px',
+//  duration: 2000,
+//  delay: 400,
+//  reset: false,
+//});
 
-sr.reveal('.text-2', { delay: 500 });
-sr.reveal('.resume', { delay: 600 });
-sr.reveal('.right', { delay: 700 });
-sr.reveal('.left', { delay: 800, origin: 'bottom' });
-sr.reveal('.card', { interval: 400 });
+//sr.reveal('.text-2', { delay: 500 });
+//sr.reveal('.resume', { delay: 600 });
+//sr.reveal('.right', { delay: 700 });
+//sr.reveal('.left', { delay: 800, origin: 'bottom' });
+//sr.reveal('.card', { interval: 400 });
 
 //------ VALUE ACCORDION ------//
 let accordionItems = Array.from(
