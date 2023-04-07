@@ -434,7 +434,6 @@ footer {
   }
 
   .home .left .img .imgbg {
-    height: 70vh;
     width: 100%;
     overflow: hidden;
   }
@@ -492,10 +491,6 @@ footer {
 @media (max-width: 500px) {
   .section-title {
     font-size: var(--big-font-size);
-  }
-
-  .home .left .img .imgbg {
-    height: 60vh;
   }
 
   .home .right .text-1 {
