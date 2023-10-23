@@ -23,6 +23,7 @@
       rel="stylesheet"
     />
     <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -106,9 +107,57 @@
             <div class="text-2">
               Mazedul Islam Rion<span class="accent-1">.</span>
             </div>
-            <div class="text-3">Welcome to my website...</div>
+            <div class="text-3">Designer & Developer</div>
             <div class="resume">
               <a href="images/resume.pdf">Resume</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="projects">
+        <div class="container">
+          <span class="section-subtitle">Projects</span>
+          <h2 class="section-title">
+            Work I have done<span class="accent-1">.</span>
+          </h2>
+          <div class="project-container homyz">
+            <div class="left">
+              <div class="title">Homyz.</div>
+              <div class="description">
+                I took inspiration from dribble and develop this website. The
+                orginal website is designed by
+                <a href="https://dribbble.com/Adhiari_is">Adhiari Subekti.</a>
+                But I added some of my own touch to it. Tried to make it a
+                little bit more special.
+              </div>
+              <div class="case_study">
+                <a href="case_study/homzy">Case Study...</a>
+              </div>
+            </div>
+            <div class="right">
+              <img
+                src="images/Real State Mockup.png"
+                alt="Real State Website developed by Mazedul Islam Rion"
+              />
+            </div>
+          </div>
+          <div class="project-container magnadokan">
+            <div class="left">
+              <img
+                src="images/Magna Dokan Mockup.png"
+                alt="Book destribution CSM developed by Mazedul Islam Rion"
+              />
+            </div>
+            <div class="right">
+              <div class="title">Magna Dokan.</div>
+              <div class="description">
+                It was a client project. I designed and developed this website
+                by myself. This is a full CMS. The client told me to make a
+                website where he can destribute some books for free.
+              </div>
+              <div class="case_study">
+                <a href="">Case Study...</a>
+              </div>
             </div>
           </div>
         </div>
@@ -116,9 +165,9 @@
       <!-- SERVICES -->
       <section class="services">
         <div class="container">
-          <span class="section-subtitle">Our Services</span>
+          <span class="section-subtitle">My Services</span>
           <h2 class="section-title">
-            Services I provide to you<span class="accent-1">.</span>
+            Works I can do for you<span class="accent-1">.</span>
           </h2>
           <div class="services-container">
             <div class="card">
@@ -126,8 +175,8 @@
                 <i class="bx bx-paint accent-1"></i>
                 <div class="name">Web Design</div>
                 <p>
-                  I provide the best creative, modern, and responsive design as
-                  per your need.
+                  I design modern websites with minimal looks and easy to
+                  understand UI for the users.
                 </p>
               </div>
             </div>
@@ -136,18 +185,18 @@
                 <i class="bx bx-code accent-1"></i>
                 <div class="name">Web Development</div>
                 <p>
-                  I can develop the frontend and backend of your website
-                  efficiently as per your need.
+                  I develop end to end of a website with optimal Performance,
+                  SEO and Accessibility.
                 </p>
               </div>
             </div>
             <div class="card">
               <div class="box">
-                <i class="bx bx-server accent-1"></i>
-                <div class="name">Server Management</div>
+                <i class="bx bx-loader-alt accent-1"></i>
+                <div class="name">Website Optimization</div>
                 <p>
-                  I can manage your web server, look after primary security and
-                  update the contents as per your need.
+                  I can optimize any website for best Performance, SEO,
+                  Accessibility etc.
                 </p>
               </div>
             </div>
@@ -156,8 +205,8 @@
                 <i class="bx bxl-wordpress accent-1"></i>
                 <div class="name">Wordpress Development</div>
                 <p>
-                  I can customize your themes, create new themes and plugins as
-                  per your need.
+                  I develop Wordpress themes, customize existing themes per user
+                  requirements and deploy them.
                 </p>
               </div>
             </div>
@@ -206,8 +255,8 @@
                 </div>
                 <div class="value_accordion-content">
                   <div class="value_accordion-description">
-                    I code with propper commenting so when you will try to
-                    update anything the developer can do his job easily.
+                    I code with propper optimization and commenting. So, the
+                    website become more optimized and easily upgradable.
                   </div>
                 </div>
               </div>
@@ -223,7 +272,7 @@
                   <div class="value_accordion-description">
                     I ensure the basic securities for your site. I try to
                     prevent sql injections, spam and system bugs through my
-                    cooding.
+                    coding.
                   </div>
                 </div>
               </div>
@@ -246,6 +295,31 @@
           </div>
         </div>
       </section>
+      <section class="contact">
+        <div class="container">
+          <span class="section-subtitle">Contact Me</span>
+          <h2 class="section-title">
+            Tell me your need<span class="accent-1">.</span>
+          </h2>
+          <div class="contact-container">
+            <div class="left">
+              <form action="" method="post">
+                <input type="email" name="email" placeholder="Your email here." required>
+                <input type="text" name="subject" placeholder="Topic you wanna talk on." required>
+                <textarea name="message" cols="30" rows="10" placeholder="Your message here...."></textarea>
+                <input type="submit" value="Send Message" id="send_message" style="display: none;">
+              </form>
+            </div>
+            <div class="right">
+              <input type="submit" value="Send Message" onclick="send_message.click()">
+              <p>or,</p><br/>
+              <p>Email me on:</p>
+              <a href="mailto:rionislam6348@gmail.com">rionislam6348@gmail.com</a>
+            </div>
+          </div>
+          
+        </div>
+      </div>
     </main>
     <!-- footer -->
     <footer>&copy; Mazedul Islam Rion</footer>

@@ -1,59 +1,9 @@
-/** @format */
+/**
+ * Header style
+ *
+ * @format
+ */
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;1,500&family=Ubuntu:ital,wght@0,400;0,500;0,700;1,500&display=swap');
-
-:root {
-  --title-color: #293d57;
-  --light-color: white;
-  --dark-color: #0f0f0f;
-  --accent-1: #679bdd;
-  --accent-1-lighten: #679add3d;
-  --shadow-color: #679bdd1e;
-  --biggest-font-size: 3rem;
-  --bigger-font-size: 2.5rem;
-  --big-font-size: 2rem;
-  --semi-normal-font-size: 1.5rem;
-  --normal-font-size: 0.938rem;
-  --small-font-size: 0.813rem;
-  --smaller-font-size: 0.75rem;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  text-decoration: none;
-  line-height: 1.3;
-}
-
-main {
-  overflow: hidden;
-}
-
-.accent-1 {
-  color: var(--accent-1);
-}
-
-.container {
-  max-width: 1028px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.section-subtitle {
-  font-size: var(--normal-font-size);
-  color: var(--accent-1);
-}
-
-.section-title {
-  font-weight: 500;
-  font-size: var(--bigger-font-size);
-  font-family: 'Ubuntu', sans-serif;
-  margin-bottom: 1rem;
-  color: var(--title-color);
-}
-
-/* Header style */
 header {
   position: fixed;
   width: 100%;
@@ -133,6 +83,7 @@ header nav img:hover,
   padding-top: 10rem;
   padding-bottom: 5rem;
   background: white;
+  height: 100vh;
 }
 
 .home-container {
@@ -151,6 +102,12 @@ header nav img:hover,
 .home .left .img {
   width: 100%;
   height: auto;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.home .left .img:hover {
+  scale: 1.02;
 }
 
 .home .left .img .imgbg {
@@ -174,6 +131,7 @@ header nav img:hover,
 
 .home .right .text-1 {
   font-size: var(--big-font-size);
+  cursor: pointer;
 }
 
 .home .right .text-2 {
@@ -181,10 +139,12 @@ header nav img:hover,
   font-weight: 500;
   margin: 0.5rem 0;
   color: var(--title-color);
+  cursor: pointer;
 }
 
 .home .right .text-3 {
   font-size: var(--bigger-font-size);
+  cursor: pointer;
 }
 
 .home .right .resume {
@@ -201,18 +161,76 @@ header nav img:hover,
 }
 
 .home .right .resume a:hover {
-  background: none;
+  box-shadow: 8px 8px 10px var(--shadow-color);
+}
+
+/* projects style */
+.projects {
+  height: auto;
+  background: hsl(228, 24%, 97%);
+  overflow: hidden;
+  padding: 4rem 0;
+  display: flex;
+}
+
+.project-container {
+  height: auto;
+  /* height: calc(100vh - 15.25rem); */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.project-container.homyz .left {
+  width: 40%;
+}
+
+.project-container.homyz .right {
+  width: 60%;
+}
+
+.project-container.magnadokan .left {
+  width: 60%;
+}
+
+.project-container.magnadokan .right {
+  width: 40%;
+}
+
+.project-container .title {
+  font-weight: 500;
+  font-size: var(--big-font-size);
+  font-family: 'Poppins', sans-serif;
+  color: gray;
+  margin: 2rem 0;
+}
+
+.project-container .description {
+  font-size: var(--semi-normal-font-size);
+}
+
+.project-container .description a {
   color: gray;
 }
 
+.project-container .case_study a {
+  color: var(--accent-1);
+  font-family: 'Ubuntu', sans-serif;
+  font-size: var(--normal-font-size);
+  text-decoration: underline;
+}
+
+.project-container img {
+  width: 100%;
+  transition: all 0.4s ease;
+  cursor: pointer;
+}
+
+.project-container img:hover {
+  transform: rotate3d(2, 1, 0, 10deg);
+}
 /* services style */
 .services {
-  background: linear-gradient(
-    170deg,
-    hsl(0, 0%, 22%) 0%,
-    var(--dark-color) 30%
-  );
-  color: var(--light-color);
   padding-top: 4rem;
   padding-bottom: 4rem;
   font-family: 'Poppines', sans-serif;
@@ -227,23 +245,24 @@ header nav img:hover,
   justify-content: space-between;
 }
 
-.services .section-title {
-  color: var(--light-color);
-}
-
 .services-container .card {
   margin: 1rem 0;
   width: 49%;
 }
 
 .services-container .box {
-  padding: 1rem 2rem;
+  padding: 2rem;
   text-align: center;
   cursor: pointer;
+  border: 1px solid var(--accent-1-lighten);
+  border-radius: 3px;
+  transition: all 0.4s ease;
 }
 
 .services-container .box:hover {
+  scale: 1.01;
   box-shadow: 0 12px 16px var(--shadow-color);
+  border: 2px solid var(--accent-1-lighten);
 }
 
 .services-container .box i {
@@ -343,6 +362,10 @@ header nav img:hover,
   transition: 0.4s;
 }
 
+.accordion-open .value_accordion-arrow i {
+  transform: rotate(180deg);
+}
+
 .value_accordion-content {
   overflow: hidden;
   height: 0;
@@ -353,6 +376,73 @@ header nav img:hover,
   font-size: 0.813rem;
   padding: 1.25rem 2.5rem 0 2.75rem;
   padding-bottom: 1rem;
+}
+
+/* contact style */
+.contact {
+  background: var(--light-color);
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  font-family: 'Poppines', sans-serif;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact-container .left {
+  width: 59%;
+}
+
+.contact-container .right {
+  width: 39%;
+}
+
+.contact-container input[type='submit'] {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  resize: none;
+  border: none;
+  border-radius: 3px;
+  width: 100%;
+  background: var(--accent-1);
+  color: var(--light-color);
+  transition: all 0.4s ease;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: var(--semi-normal-font-size);
+}
+
+.contact-container input[type='submit']:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 10px 10px var(--shadow-color);
+}
+
+.contact-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.contact-container form input,
+.contact-container form textarea {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  resize: none;
+  border: 1px solid var(--accent-1-lighten);
+  border-radius: 3px;
+}
+
+.contact-container form input:focus,
+.contact-container form textarea:focus {
+  outline: 1px solid var(--accent-1);
+}
+
+.contact-container .right a {
+  color: hsl(240, 7%, 84%);
+  font-size: var(--semi-normal-font-size);
 }
 
 /* Footer style */
@@ -416,6 +506,11 @@ footer {
     display: none;
   }
 
+  .home {
+    height: auto;
+    padding-bottom: 1rem;
+  }
+
   .home .left,
   .home .right {
     width: 100%;
@@ -474,6 +569,17 @@ footer {
     font-size: var(--bigger-font-size);
   }
 
+  .project-container.magnadokan {
+    flex-wrap: wrap-reverse;
+  }
+
+  .project-container.homyz .right,
+  .project-container.homyz .left,
+  .project-container.magnadokan .right,
+  .project-container.magnadokan .left {
+    width: 100%;
+  }
+
   .services-container .card {
     width: 100%;
   }
@@ -484,6 +590,11 @@ footer {
 
   .values-container .left,
   .values-container .right {
+    width: 100%;
+  }
+
+  .contact-container .left,
+  .contact-container .right {
     width: 100%;
   }
 }

@@ -1,0 +1,138 @@
+/** @format */
+.title {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: var(--big-font-size);
+  font-weight: 500;
+  margin: 1rem 0;
+}
+
+.description {
+  font-size: var(--semi-normal-font-size);
+}
+
+.description a {
+  color: gray;
+}
+
+header {
+  width: 100%;
+}
+
+header .header-container {
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Ubuntu', sans-serif;
+  transition: all 0.4s ease;
+}
+
+header .back_button i {
+  font-size: 2rem;
+  padding: 0.7rem;
+  color: var(--dark-color);
+  border-radius: 50%;
+  box-shadow: 0 0 20px #679add60;
+}
+
+header .page-name {
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 2rem;
+  color: var(--accent-1-lighten);
+}
+
+/* overview style */
+
+.overview-container {
+  display: flex;
+  height: auto;
+  overflow: hidden;
+}
+
+.overview-container .left {
+  width: 60%;
+}
+
+.overview-container .left img {
+  width: 100%;
+  height: auto;
+}
+
+.overview-container .right {
+  width: 40%;
+}
+
+/* animation style */
+.animation {
+  background: hsl(228, 24%, 97%);
+  padding: 2rem 0;
+}
+
+.animation-container {
+  display: flex;
+}
+
+.animation-container .left,
+.animation-container .right {
+  width: 50%;
+  text-align: center;
+}
+
+.animation-container .left img,
+.animation-container .right img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.animation-container span {
+  color: gray;
+}
+
+/* challenges style */
+.challenges {
+  padding: 2rem 0;
+}
+
+.challenges-container {
+  display: flex;
+}
+
+.challenges-container .left {
+  width: 40%;
+}
+
+.challenges-container .left .description {
+  font-size: var(--normal-font-size);
+}
+
+.challenges-container .left .live_website {
+  color: var(--accent-1);
+  font-family: 'Ubuntu', sans-serif;
+  font-size: var(--normal-font-size);
+  text-decoration: underline;
+}
+
+.challenges-container .right {
+  width: 60%;
+}
+
+.challenges-container .right img {
+  width: 100%;
+}
+
+/* Footer style */
+
+footer {
+  text-align: center;
+  color: var(--title-color);
+}
+
+@media (max-width: 947px) {
+  .container {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}

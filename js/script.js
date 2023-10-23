@@ -47,6 +47,42 @@ accordionItems.forEach((element) => {
   });
 });
 
+// //------ CAROUSEL ------//
+// let slidePosition = 0;
+// const slides = document.getElementsByClassName('carouselItem');
+// let dots = Array.from(document.getElementsByClassName('dot'));
+// const totalSlides = slides.length;
+
+// function updateSlidePosition() {
+//   for (let slide of slides) {
+//     slide.classList.remove('carouselItem_visible');
+//     slide.classList.add('carouselItem_hidden');
+//   }
+//   dots.forEach((element) => {
+//     element.classList.remove('active');
+//   });
+//   slides[slidePosition].classList.remove('carouselItem_hidden');
+//   slides[slidePosition].classList.add('carouselItem_visible');
+//   dots[slidePosition].classList.add('active');
+// }
+
+// dots.forEach((element, i) => {
+//   element.addEventListener('mouseover', () => {
+//     slidePosition = i;
+//     updateSlidePosition();
+//   });
+// });
+
+// setInterval(function () {
+//   if (slidePosition > totalSlides - 2) {
+//     slidePosition = 0;
+//   } else {
+//     slidePosition++;
+//   }
+
+//   updateSlidePosition();
+// }, 5000);
+
 const toggleItem = (element) => {
   let accordionContent = element.getElementsByClassName(
     'value_accordion-content',
