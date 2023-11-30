@@ -91,17 +91,19 @@ header nav img:hover,
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
 }
 
 .home .left,
 .home .right {
   width: 50%;
   position: relative;
+  height: 100%;
 }
 
 .home .left .img {
   width: 100%;
-  height: auto;
+  height: 100%;
   cursor: pointer;
   transition: all 0.4s ease;
 }
@@ -111,7 +113,8 @@ header nav img:hover,
 }
 
 .home .left .img .imgbg {
-  height: 40rem;
+  max-height: 40rem;
+  height: 100%;
   width: 95%;
   background-color: hsl(228, 24%, 97%);
   border-radius: 67% 33% 34% 66% / 73% 64% 36% 27%;
@@ -119,14 +122,20 @@ header nav img:hover,
 
 .home .left .img img {
   position: absolute;
-  height: 40rem;
+  max-height: 40rem;
+  height: 100%;
   object-fit: cover;
   inset: 0;
+  left: 50%;
+  transform: translateX(-55%);
 }
 
 .home .right {
   font-family: 'Ubuntu', sans-serif;
   color: gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .home .right .text-1 {
@@ -152,7 +161,7 @@ header nav img:hover,
 }
 
 .home .right .resume a {
-  padding: 1rem 2rem;
+  padding: 0.5rem 1rem;
   background: var(--accent-1);
   font-size: var(--big-font-size);
   color: white;
@@ -537,6 +546,8 @@ footer {
     width: 85%;
     height: 100%;
     object-fit: scale-down;
+    left: 0;
+    transform: unset;
   }
 
   .phone-nav {

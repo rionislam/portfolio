@@ -47,9 +47,9 @@ header .page-name {
 
 .overview-container {
   display: flex;
-  flex-wrap: wrap;
   height: auto;
   overflow: hidden;
+  flex-wrap: wrap;
 }
 
 .overview-container .left {
@@ -99,7 +99,6 @@ header .page-name {
 
 .challenges-container {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .challenges-container .left {
