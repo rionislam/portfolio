@@ -50,19 +50,98 @@ header .page-name {
   height: auto;
   overflow: hidden;
   flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 1rem;
 }
 
 .overview-container .left {
-  width: 60%;
+  width: 59%;
+  height: auto;
+}
+
+.overview-container .left .img-container{
+  overflow: hidden;
+  display: flex;
+  position: relative;
+}
+
+.overview-container .left .img-container::before{
+  content: "";
+  position: absolute;
+  right: 0;
+  width: 0%;
+  height: 100%;
+  background: white;
+  transition:border 1s ease;
+  z-index: 3;
+  animation: revealFromLeft 1s ease;
 }
 
 .overview-container .left img {
   width: 100%;
   height: auto;
+  border: 2px solid var(--accent-1-lighten);
+  border-radius: 5px;
+  animation: reveal 1.1s ease;
+  transition: all 0.4s ease;
 }
 
 .overview-container .right {
   width: 40%;
+}
+
+.overview-container .right a{
+  color: var(--accent-1);
+  font-family: 'Ubuntu', sans-serif;
+  font-size: var(--normal-font-size);
+  text-decoration: underline;
+}
+
+@keyframes reveal {
+  0%{
+    border-radius: 0;
+    border: 2px solid white;
+  }100%{
+    border-radius: 3px;
+    border: 2px solid white;
+  }
+}
+
+@keyframes revealFromLeft{
+  0%{
+    width: 90%;
+  }100%{
+    width: 0%;
+  }
+  
+}
+
+/* tech style */
+.tech{
+  background: hsl(228, 24%, 97%);
+  padding: 2rem 0;
+}
+
+.techs-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.tech-wrapper{
+  display: flex;
+  width: 30%;
+  margin: 0.5rem 0;
+  align-items: center;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: var(--normal-font-size);
+  font-weight: 600;
+}
+
+.tech-wrapper img{
+  height: 32px;
+  width: 32px;
+  margin-right: 0.2rem;
 }
 
 /* animation style */
