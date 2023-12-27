@@ -268,14 +268,23 @@ header nav img:hover,
   transition: all 0.4s ease;
 }
 
+.services-container .card:first-child .box{
+  background: var(--dark-color);
+  color: white;
+}
+
 .services-container .box:hover {
-  scale: 1.01;
+  scale: 1.005;
   box-shadow: 0 12px 16px var(--shadow-color);
   border: 2px solid var(--accent-1-lighten);
 }
 
 .services-container .box i {
   font-size: 2rem;
+}
+
+.services-container .card:first-child .box i{
+  color: var(--background-color);
 }
 
 .services-container .box .name {
