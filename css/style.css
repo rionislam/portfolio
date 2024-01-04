@@ -128,6 +128,8 @@ header nav img:hover,
   inset: 0;
   left: 50%;
   transform: translateX(-55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
 .home .right {
@@ -268,7 +270,7 @@ header nav img:hover,
   transition: all 0.4s ease;
 }
 
-.services-container .card:first-child .box{
+.services-container .card:first-child .box {
   background: var(--dark-color);
   color: white;
 }
@@ -283,7 +285,7 @@ header nav img:hover,
   font-size: 2rem;
 }
 
-.services-container .card:first-child .box i{
+.services-container .card:first-child .box i {
   color: var(--background-color);
 }
 
