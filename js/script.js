@@ -1,30 +1,232 @@
 /** @format */
 
 //------ CHANGE HEADER BACKGROUND ------//
-const scrollHeader = () => {
-  let header = document.getElementsByTagName('header')[0];
-  if (this.scrollY >= 10) {
-    header.classList.add('header-sticky');
-  } else {
-    header.classList.remove('header-sticky');
-  }
-};
-window.addEventListener('scroll', scrollHeader);
+// const scrollHeader = () => {
+//   let header = document.getElementsByTagName('header')[0];
+//   if (this.scrollY >= 10) {
+//     header.classList.add('header-sticky');
+//   } else {
+//     header.classList.remove('header-sticky');
+//   }
+// };
+// window.addEventListener('scroll', scrollHeader);
 
-//------ SCROLL REVEAL ANIMATION ------//
-const sr = ScrollReveal({
-  origin: 'top',
-  distance: '60px',
-  duration: 2000,
-  delay: 400,
-  reset: false,
+//------ ABOUT ME SECTION ------//
+const isInViewport = (element) => {
+  let rect = element.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+};
+let aboutMeP = document
+  .getElementsByClassName('about-me')[0]
+  .getElementsByTagName('p')[0];
+
+window.addEventListener('scroll', () => {
+  if (isInViewport(aboutMeP)) {
+    let viewportHeight = window.innerHeight;
+    let rect = aboutMeP.getBoundingClientRect();
+    let top = rect.top;
+    let bottom = rect.bottom;
+    // Calculate opacity based on scroll position
+    let midViewport = viewportHeight / 2 + 96;
+    let distanceToMid = Math.min(
+      (midViewport - (top + (bottom - top) / 2)) * -1,
+      midViewport,
+    );
+    let minValue = 0;
+    let maxValue = 100;
+    let calculatedValue;
+    if (distanceToMid < 1) {
+      calculatedValue = 100;
+    } else {
+      calculatedValue =
+        minValue + (maxValue - minValue) * (1 - distanceToMid / midViewport);
+    }
+
+    let span = aboutMeP.getElementsByTagName('span')[0];
+    span.style.backgroundSize = calculatedValue + '% 100%';
+  }
+});
+//------ PROJECTS SECTION ------//
+let projects = document.getElementById('projects');
+let projectsShown = false;
+let detailsContainer = projects.getElementsByClassName('details-container')[0];
+let imgsWrapper = projects.getElementsByClassName('imgs-wrapper')[0];
+let detailsHeight = detailsContainer.children[0].offsetHeight;
+let imgWidth = imgsWrapper.children[0].offsetWidth;
+let totalCount = detailsContainer.childElementCount;
+let currentCount = 1;
+
+let projectsObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.intersectionRatio > 0.5) {
+        // More than 50% of projects element is visible
+        window.scrollTo({
+          top: projects.offsetTop + 32,
+          behavior: 'smooth',
+        });
+      }
+      projectsShown = entry.isIntersecting;
+    });
+  },
+  {
+    threshold: 0.5,
+  },
+);
+
+projectsObserver.observe(projects);
+
+let rotation = 0;
+
+let touchStartY = 0;
+let touchEndY = 0;
+
+projects.addEventListener('touchstart', (event) => {
+  touchStartY = event.touches[0].clientY;
 });
 
-sr.reveal('.text-2', { delay: 500 });
-sr.reveal('.resume', { delay: 600 });
-sr.reveal('.right', { delay: 700 });
-sr.reveal('.left', { delay: 800, origin: 'bottom' });
-sr.reveal('.card', { interval: 400 });
+projects.addEventListener('touchmove', (event) => {
+  if (projectsShown) {
+    event.preventDefault();
+  }
+});
+
+projects.addEventListener('touchend', (event) => {
+  touchEndY = event.changedTouches[0].clientY;
+  handleTouchScroll();
+});
+
+projects.addEventListener('wheel', (event) => {
+  event.preventDefault();
+  handleMouseWheelScroll(event.deltaY);
+});
+
+function handleTouchScroll() {
+  if (projectsShown) {
+    let deltaY = touchStartY - touchEndY;
+    if (Math.abs(deltaY) > 100) {
+      // Adjust this threshold as needed
+      if (deltaY > 0) {
+        scrollDown();
+      } else {
+        scrollUp();
+      }
+    }
+  }
+}
+
+function handleMouseWheelScroll(deltaY) {
+  if (projectsShown) {
+    rotation++;
+    if (rotation >= 4) {
+      if (deltaY > 1) {
+        scrollDown();
+      } else {
+        scrollUp();
+      }
+      rotation = 0;
+    }
+  }
+}
+
+function scrollDown() {
+  if (currentCount != totalCount) {
+    currentCount++;
+    detailsContainer.scrollTop += detailsHeight;
+    imgsWrapper.scrollLeft += imgWidth;
+  } else {
+    window.scrollTo({
+      top: projects.offsetTop + projects.offsetHeight + 32,
+    });
+  }
+}
+
+function scrollUp() {
+  if (currentCount > 1) {
+    currentCount--;
+    detailsContainer.scrollTop -= detailsHeight;
+    imgsWrapper.scrollLeft -= imgWidth;
+  } else {
+    window.scrollTo({
+      top: projects.offsetTop - projects.offsetHeight + 32,
+    });
+  }
+}
+
+// let startY = 0;
+// let endY = 0;
+
+// projects.addEventListener('touchstart', (event) => {
+//   if (projectsShown) {
+//     startY = event.touches[0].clientY;
+//     currentCount = Math.round(scrollTop / detailsHeight) + 1;
+//   }
+// });
+
+// projects.addEventListener('touchmove', (event) => {
+//   if (projectsShown) {
+//     let count = 0;
+//     event.preventDefault();
+//     const touch = event.touches[0];
+//     endY = touch.clientY;
+//     let deltaY = (endY - startY) * -1;
+//     if (Math.abs(deltaY) > detailsHeight / 1.2 && count == 0) {
+//       count = 1;
+//       if (deltaY > 1) {
+//         if (currentCount != totalCount) {
+//           currentCount++;
+//           detailsContainer.scrollTop += detailsHeight;
+//           imgsWrapper.scrollLeft += imgWidth;
+//         } else {
+//           window.scrollTo({
+//             top: projects.offsetTop + projects.offsetHeight + 32,
+//           });
+//         }
+//       } else {
+//         if (currentCount > 1) {
+//           currentCount--;
+//           detailsContainer.scrollTop -= detailsHeight;
+//           imgsWrapper.scrollLeft -= imgWidth;
+//         } else {
+//           window.scrollTo({
+//             top: projects.offsetTop - projects.offsetHeight + 32,
+//           });
+//         }
+//       }
+//     }
+//   }
+// });
+
+// // detailsContainer.addEventListener('scroll', () => {
+// //   scrollTop = detailsContainer.scrollTop;
+// //   if (projectsShown) {
+// //     window.scrollTo({
+// //       top: projects.offsetTop - 96,
+// //     });
+// //   }
+// // });
+
+// window.addEventListener('scroll', () => {
+//   if (sticky == true) {
+//     let scrollPosition = window.scrollY || window.pageYOffset;
+//     let offsetTop = projects.offsetTop;
+//     let offsetHeight = projects.offsetHeight;
+//     if (
+//       scrollPosition < offsetTop - 96 &&
+//       scrollPosition > offsetTop - 96 - offsetHeight / 2
+//     ) {
+//       window.scrollTo({
+//         top: projects.offsetTop - 96,
+//       });
+//     }
+//   }
+// });
 
 //------ VALUE ACCORDION ------//
 let accordionItems = Array.from(
@@ -46,42 +248,6 @@ accordionItems.forEach((element) => {
     }
   });
 });
-
-// //------ CAROUSEL ------//
-// let slidePosition = 0;
-// const slides = document.getElementsByClassName('carouselItem');
-// let dots = Array.from(document.getElementsByClassName('dot'));
-// const totalSlides = slides.length;
-
-// function updateSlidePosition() {
-//   for (let slide of slides) {
-//     slide.classList.remove('carouselItem_visible');
-//     slide.classList.add('carouselItem_hidden');
-//   }
-//   dots.forEach((element) => {
-//     element.classList.remove('active');
-//   });
-//   slides[slidePosition].classList.remove('carouselItem_hidden');
-//   slides[slidePosition].classList.add('carouselItem_visible');
-//   dots[slidePosition].classList.add('active');
-// }
-
-// dots.forEach((element, i) => {
-//   element.addEventListener('mouseover', () => {
-//     slidePosition = i;
-//     updateSlidePosition();
-//   });
-// });
-
-// setInterval(function () {
-//   if (slidePosition > totalSlides - 2) {
-//     slidePosition = 0;
-//   } else {
-//     slidePosition++;
-//   }
-
-//   updateSlidePosition();
-// }, 5000);
 
 const toggleItem = (element) => {
   let accordionContent = element.getElementsByClassName(
