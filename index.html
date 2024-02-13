@@ -26,8 +26,23 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Ubuntu:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- LOADER -->
+    <loader>
+      <div>
+        <div>
+          <span>Hello</span>
+          <span>
+            <span>World</span>
+          </span>
+        </div>
+      </div>
+      <div>Loading...</div>
+    </loader>
     <!-- HEADER -->
     <header>
       <div class="header-container container">
@@ -70,7 +85,7 @@
         <div class="home-container container">
           <div class="left">
             <div class="img">
-              <img onload="this.style.opacity = 1" src="images/logo.png" />
+              <img id="logo" onload="this.style.opacity = 1" src="images/logo.png" />
             </div>
             <div class="phone-nav">
               <ul>
@@ -180,12 +195,14 @@
                     <div class="imgs-wrapper">
                       <div class="img-container">
                         <img
+                          loading="lazy"
                           src="images/Real State Mockup.png"
                           alt="Real State Website developed by Mazedul Islam Rion"
                         />
                       </div>
                       <div class="img-container">
                         <img
+                          loading="lazy"
                           src="images/Magna Dokan Mockup.png"
                           alt="Book destribution CSM developed by Mazedul Islam Rion"
                         />
@@ -194,28 +211,10 @@
                     
                     
                   </div>
-                
-              <!-- <div class="project">
-                <div class="left">
-                  <img
-                    src="images/Magna Dokan Mockup.png"
-                    alt="Book destribution CSM developed by Mazedul Islam Rion"
-                  />
-                </div>
-                <div class="right">
-                  <div class="title">Magna Dokan.</div>
-                  <div class="description">
-                    It was a full-stack project. This was a great project for me. I got to play with many new things. Like Google Drive api.
-                  </div>
-                  <div class="case_study">
-                    <a href="case_study/magna dokan">Case Study...</a>
-                  </div>
-                </div>
-              </div> -->
             </div>
             
           </div>
-        </section>
+      </section>
       
       <!-- SERVICES -->
       <section class="services">
@@ -273,6 +272,7 @@
         <div class="values-container container">
           <div class="left">
             <img
+              loading="lazy"
               src="images/web development illustration modern can_4461020.png"
             />
           </div>

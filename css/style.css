@@ -3,6 +3,99 @@
  *
  * @format
  */
+loader {
+  height: 100vh;
+  width: 100vw;
+  background: var(--dark-color);
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  opacity: 1;
+  font-family: 'system-ui', sans-serif;
+
+  color: var(--light-color);
+}
+
+loader.remove {
+  animation: slideLeft linear forwards;
+  animation-duration: 0.6s;
+  animation-delay: 2.5s;
+}
+loader div {
+  text-align: center;
+}
+
+loader div:first-child {
+  height: 80vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+loader div:first-child > div {
+  height: auto;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 50px;
+  letter-spacing: 1px;
+  display: inline-block;
+  vertical-align: middle;
+  animation: fadeIn 1.5s forwards;
+  opacity: 0;
+  transition-timing-function: scale(1);
+  transition-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+loader div:first-child > div > span:first-child {
+  display: inline-block;
+  animation: firstspan 1.5s forwards cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transform: translateX(50%);
+  z-index: 1;
+  position: relative;
+  font-weight: 500;
+  background: var(--dark-color);
+}
+
+loader div:first-child > div > span:last-child {
+  display: inline-flex;
+  overflow: hidden;
+}
+
+loader div:first-child > div > span:last-child > span {
+  font-weight: 100;
+  z-index: -1;
+  display: inline-block;
+  transform: translateX(-100%);
+  animation: secondspan 1.5s forwards cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+
+@keyframes slideLeft {
+  to {
+    left: -100%;
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transition-timing-function: scale(1);
+  }
+}
+
+@keyframes firstspan {
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes secondspan {
+  to {
+    transform: translateX(0%);
+  }
+}
 
 header {
   width: 100%;
@@ -13,7 +106,9 @@ header {
   justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   transition: all 0.4s ease;
 }
 
@@ -123,7 +218,8 @@ header nav img:hover,
 }
 
 .home .right {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
   color: gray;
   display: flex;
   flex-direction: column;
@@ -199,17 +295,19 @@ header nav img:hover,
 
 .projects {
   background: hsl(228, 24%, 97%);
-  overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
-  scroll-snap-align: start;
-  transition: all 0.4s ease;
+  display: flex;
+  justify-content: center;
+  position: relative;
 }
 
 .projects .container {
-  height: 100%;
+  height: 100vh;
   padding-top: 4rem;
   padding-bottom: 4rem;
+  position: sticky;
+  top: 0;
 }
 
 .projects-container {
@@ -219,22 +317,13 @@ header nav img:hover,
 }
 
 .projects-container .left {
-  height: 100%;
+  height: 80%;
   display: flex;
+  overflow: hidden;
 }
 
 .projects-container .left .details-container {
-  height: 80%;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
-}
-
-.projects-container .left .details-container::-webkit-scrollbar {
-  display: none;
+  transition: transform 0.4s ease;
 }
 
 .projects-container .left .details {
@@ -243,10 +332,6 @@ header nav img:hover,
   flex-direction: column;
   justify-content: center;
   scroll-snap-align: start;
-}
-
-.projects-container .left .details.hidden {
-  display: none;
 }
 
 .projects-container .right {
@@ -259,16 +344,7 @@ header nav img:hover,
   display: flex;
   flex-direction: row;
   align-items: center;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-}
-
-.projects-container .right .imgs-wrapper::-webkit-scrollbar {
-  display: none;
+  transition: transform 0.4s ease;
 }
 
 .projects-container .right .img-container {
@@ -286,7 +362,7 @@ header nav img:hover,
 .projects-container .title {
   font-weight: 500;
   font-size: var(--big-font-size);
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
   color: gray;
   margin: 1rem 0;
 }
@@ -326,7 +402,9 @@ header nav img:hover,
 
 .projects-container .case_study a {
   color: var(--accent-1);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: var(--normal-font-size);
   text-decoration: underline;
 }
@@ -351,34 +429,34 @@ header nav img:hover,
 
 .services-container {
   margin: 2rem 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(400px, 1fr)
+  ); /* Adjust the min width as needed */
+  gap: 1rem; /* Adjust the gap between items as needed */
+  align-items: stretch; /* Ensures all items have the same height */
 }
 
 .services-container .card {
-  margin: 1rem 0;
-  width: 49%;
-}
-
-.services-container .box {
-  padding: 2rem;
   text-align: center;
   cursor: pointer;
-  border: 1px solid var(--accent-1-lighten);
+  border: 2px solid var(--accent-1-lighten);
   border-radius: 3px;
   transition: all 0.4s ease;
 }
 
-.services-container .card:first-child .box {
+.services-container .box {
+  padding: 2rem;
+}
+
+.services-container .card:first-child {
   background: var(--dark-color);
   color: white;
 }
 
-.services-container .box:hover {
-  scale: 1.005;
+.services-container .card:hover {
+  scale: 1.02;
   box-shadow: 0 12px 16px var(--shadow-color);
   border: 2px solid var(--accent-1-lighten);
 }
@@ -393,7 +471,9 @@ header nav img:hover,
 
 .services-container .box .name {
   font-size: var(--big-font-size);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-weight: 500;
   margin: 0.5rem 0;
 }
@@ -465,7 +545,9 @@ header nav img:hover,
 
 .value_accordion-title {
   font-size: var(--normal-font-size);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-weight: 600;
 }
 
@@ -533,7 +615,9 @@ header nav img:hover,
   background: var(--accent-1);
   color: var(--light-color);
   transition: all 0.4s ease;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: var(--semi-normal-font-size);
 }
 
@@ -709,10 +793,6 @@ footer {
     height: 100%;
   }
 
-  .services-container .card {
-    width: 100%;
-  }
-
   .services-container .box .name {
     font-size: var(--big-font-size);
   }
@@ -765,6 +845,10 @@ footer {
     margin: 0.5rem 0;
   }
 
+  .services-container {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+
   .services-container .box .name {
     font-size: var(--semi-normal-font-size);
   }
@@ -799,6 +883,11 @@ footer {
     font-size: var(--semi-normal-font-size);
   }
 
+  .about-me p {
+    line-height: 1;
+    font-size: var(--normal-font-size);
+  }
+
   .projects-container .title {
     font-size: var(--semi-normal-font-size);
   }
@@ -808,8 +897,7 @@ footer {
     font-size: var(--normal-font-size);
   }
 
-  .about-me p {
-    line-height: 1;
-    font-size: var(--normal-font-size);
+  .services-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }

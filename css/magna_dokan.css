@@ -1,6 +1,8 @@
 /** @format */
 .title {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: var(--big-font-size);
   font-weight: 500;
   margin: 1rem 0;
@@ -25,7 +27,9 @@ header .header-container {
   justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   transition: all 0.4s ease;
 }
 
@@ -38,7 +42,9 @@ header .back_button i {
 }
 
 header .page-name {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: 2rem;
   color: var(--accent-1-lighten);
 }
@@ -59,14 +65,14 @@ header .page-name {
   height: auto;
 }
 
-.overview-container .left .img-container{
+.overview-container .left .img-container {
   overflow: hidden;
   display: flex;
   position: relative;
 }
 
-.overview-container .left .img-container::before{
-  content: "";
+.overview-container .left .img-container::before {
+  content: '';
   position: absolute;
   right: 0;
   height: 100%;
@@ -85,60 +91,64 @@ header .page-name {
   width: 40%;
 }
 
-.overview-container .right a{
+.overview-container .right a {
   color: var(--accent-1);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: var(--normal-font-size);
   text-decoration: underline;
 }
 
 @keyframes reveal {
-  0%{
+  0% {
     border: none;
     border-radius: 0;
-    
   }
-  70%{
+  70% {
     border: none;
     border-radius: 0;
-  }100%{
+  }
+  100% {
     border-radius: 5px;
     border: 2px solid var(--accent-1-lighten);
   }
 }
 
-@keyframes revealFromLeft{
-  0%{
+@keyframes revealFromLeft {
+  0% {
     width: 90%;
-  }100%{
+  }
+  100% {
     width: 0%;
   }
-  
 }
 
 /* tech style */
-.tech{
+.tech {
   background: hsl(228, 24%, 97%);
   padding: 2rem 0;
 }
 
-.techs-container{
+.techs-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
 
-.tech-wrapper{
+.tech-wrapper {
   display: flex;
   width: 30%;
   margin: 0.5rem 0;
   align-items: center;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: var(--normal-font-size);
   font-weight: 600;
 }
 
-.tech-wrapper img{
+.tech-wrapper img {
   height: 32px;
   width: 32px;
   margin-right: 0.2rem;
@@ -190,7 +200,9 @@ header .page-name {
 
 .challenges-container .left .live_website {
   color: var(--accent-1);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: var(--normal-font-size);
   text-decoration: underline;
 }

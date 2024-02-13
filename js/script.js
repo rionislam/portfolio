@@ -1,5 +1,10 @@
 /** @format */
 
+window.addEventListener('load', () => {
+  let loader = document.getElementsByTagName('loader')[0];
+  loader.classList.add('remove');
+});
+
 //------ CHANGE HEADER BACKGROUND ------//
 // const scrollHeader = () => {
 //   let header = document.getElementsByTagName('header')[0];
@@ -62,102 +67,130 @@ let imgWidth = imgsWrapper.children[0].offsetWidth;
 let totalCount = detailsContainer.childElementCount;
 let currentCount = 1;
 
-let projectsObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.intersectionRatio > 0.5) {
-        // More than 50% of projects element is visible
-        window.scrollTo({
-          top: projects.offsetTop + 32,
-          behavior: 'smooth',
-        });
-      }
-      projectsShown = entry.isIntersecting;
-    });
-  },
-  {
-    threshold: 0.5,
-  },
-);
+projects.style.height = 100 * totalCount + 'vh';
 
-projectsObserver.observe(projects);
-
-let rotation = 0;
-
-let touchStartY = 0;
-let touchEndY = 0;
-
-projects.addEventListener('touchstart', (event) => {
-  touchStartY = event.touches[0].clientY;
-});
-
-projects.addEventListener('touchmove', (event) => {
-  if (projectsShown) {
-    event.preventDefault();
-  }
-});
-
-projects.addEventListener('touchend', (event) => {
-  touchEndY = event.changedTouches[0].clientY;
-  handleTouchScroll();
-});
-
-projects.addEventListener('wheel', (event) => {
-  event.preventDefault();
-  handleMouseWheelScroll(event.deltaY);
-});
-
-function handleTouchScroll() {
-  if (projectsShown) {
-    let deltaY = touchStartY - touchEndY;
-    if (Math.abs(deltaY) > 100) {
-      // Adjust this threshold as needed
-      if (deltaY > 0) {
-        scrollDown();
-      } else {
-        scrollUp();
-      }
+window.addEventListener('scroll', () => {
+  let rect = projects.getBoundingClientRect();
+  let container = projects.getElementsByClassName('container')[0];
+  let detailsHeight = detailsContainer.children[0].offsetHeight;
+  let imgWidth = imgsWrapper.children[0].offsetWidth;
+  if (rect.top < 1 && rect.bottom > window.innerHeight) {
+    container.style.position = 'fixed';
+    container.style.top = '0';
+    let proportion = rect.top / window.innerHeight;
+    if (proportion <= 0) {
+      let index = Math.ceil(proportion * totalCount);
+      index = Math.abs(index);
+      detailsContainer.style.transform = `translateY(-${
+        detailsHeight * index
+      }px)`;
+      imgsWrapper.style.transform = `translateX(-${imgWidth * index}px)`;
     }
-  }
-}
-
-function handleMouseWheelScroll(deltaY) {
-  if (projectsShown) {
-    rotation++;
-    if (rotation >= 4) {
-      if (deltaY > 1) {
-        scrollDown();
-      } else {
-        scrollUp();
-      }
-      rotation = 0;
-    }
-  }
-}
-
-function scrollDown() {
-  if (currentCount != totalCount) {
-    currentCount++;
-    detailsContainer.scrollTop += detailsHeight;
-    imgsWrapper.scrollLeft += imgWidth;
+  } else if (rect.bottom <= window.innerHeight) {
+    container.style.position = 'sticky';
+    container.style.top = '100%';
   } else {
-    window.scrollTo({
-      top: projects.offsetTop + projects.offsetHeight + 32,
-    });
+    container.style.position = 'sticky';
+    container.style.top = '0';
   }
-}
+});
 
-function scrollUp() {
-  if (currentCount > 1) {
-    currentCount--;
-    detailsContainer.scrollTop -= detailsHeight;
-    imgsWrapper.scrollLeft -= imgWidth;
-  } else {
-    window.scrollTo({
-      top: projects.offsetTop - projects.offsetHeight + 32,
-    });
-  }
-}
+// let projectsObserver = new IntersectionObserver(
+//   (entries) => {
+//     entries.forEach((entry) => {
+//       if (entry.intersectionRatio > 0.5) {
+//         // More than 50% of projects element is visible
+//         window.scrollTo({
+//           top: projects.offsetTop + 32,
+//           behavior: 'smooth',
+//         });
+//       }
+//       projectsShown = entry.isIntersecting;
+//     });
+//   },
+//   {
+//     threshold: 0.5,
+//   },
+// );
+
+// projectsObserver.observe(projects);
+
+// let rotation = 0;
+
+// let touchStartY = 0;
+// let touchEndY = 0;
+
+// projects.addEventListener('touchstart', (event) => {
+//   touchStartY = event.touches[0].clientY;
+// });
+
+// projects.addEventListener('touchmove', (event) => {
+//   if (projectsShown) {
+//     event.preventDefault();
+//   }
+// });
+
+// projects.addEventListener('touchend', (event) => {
+//   touchEndY = event.changedTouches[0].clientY;
+//   handleTouchScroll();
+// });
+
+// projects.addEventListener('wheel', (event) => {
+//   event.preventDefault();
+//   handleMouseWheelScroll(event.deltaY);
+// });
+
+// function handleTouchScroll() {
+//   if (projectsShown) {
+//     let deltaY = touchStartY - touchEndY;
+//     if (Math.abs(deltaY) > 100) {
+//       // Adjust this threshold as needed
+//       if (deltaY > 0) {
+//         scrollDown();
+//       } else {
+//         scrollUp();
+//       }
+//     }
+//   }
+// }
+
+// function handleMouseWheelScroll(deltaY) {
+//   if (projectsShown) {
+//     rotation++;
+//     if (rotation >= 4) {
+//       if (deltaY > 1) {
+//         scrollDown();
+//       } else {
+//         scrollUp();
+//       }
+//       rotation = 0;
+//     }
+//   }
+// }
+
+// function scrollDown() {
+//   if (currentCount != totalCount) {
+//     currentCount++;
+//     detailsContainer.scrollTop += detailsHeight;
+//     imgsWrapper.scrollLeft += imgWidth;
+//   } else {
+//     window.scrollTo({
+//       top: projects.offsetTop + projects.offsetHeight + 32,
+//     });
+//   }
+// }
+
+// function scrollUp() {
+//   if (currentCount > 1) {
+//     currentCount--;
+//     detailsContainer.scrollTop -= detailsHeight;
+//     imgsWrapper.scrollLeft -= imgWidth;
+//   } else {
+//     window.scrollTo({
+//       top: projects.offsetTop - projects.offsetHeight + 32,
+//     });
+//   }
+// }
 
 // let startY = 0;
 // let endY = 0;

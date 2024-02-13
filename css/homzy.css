@@ -1,6 +1,8 @@
 /** @format */
 .title {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: var(--big-font-size);
   font-weight: 500;
   margin: 1rem 0;
@@ -25,7 +27,9 @@ header .header-container {
   justify-content: space-between;
   margin-top: 2rem;
   margin-bottom: 2rem;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   transition: all 0.4s ease;
 }
 
@@ -38,7 +42,9 @@ header .back_button i {
 }
 
 header .page-name {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: 2rem;
   color: var(--accent-1-lighten);
 }
@@ -112,7 +118,9 @@ header .page-name {
 
 .challenges-container .left .live_website {
   color: var(--accent-1);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Ubuntu', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial',
+    sans-serif;
+
   font-size: var(--normal-font-size);
   text-decoration: underline;
 }
