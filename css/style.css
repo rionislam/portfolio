@@ -20,7 +20,7 @@ loader {
 loader.remove {
   animation: slideLeft linear forwards;
   animation-duration: 0.6s;
-  animation-delay: 2.5s;
+  animation-delay: 2s;
 }
 loader div {
   text-align: center;
@@ -288,7 +288,7 @@ header nav img:hover,
   background-size: 0% 100%;
   background-repeat: no-repeat;
   background-clip: text;
-  transition: background 0.4s ease;
+  transition: background 0.4s linear;
 }
 
 /* projects style */

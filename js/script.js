@@ -6,27 +6,17 @@ window.addEventListener('load', () => {
 });
 
 //------ ABOUT ME SECTION ------//
-const isInViewport = (element) => {
-  let rect = element.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-};
 let aboutMeP = document
   .getElementsByClassName('about-me')[0]
   .getElementsByTagName('p')[0];
 
 window.addEventListener('scroll', () => {
-  if (isInViewport(aboutMeP)) {
-    let viewportHeight = window.innerHeight;
-    let rect = aboutMeP.getBoundingClientRect();
-    let top = rect.top;
+  let rect = aboutMeP.getBoundingClientRect();
+  let top = rect.top;
+  let viewportHeight = window.innerHeight;
+  let span = aboutMeP.getElementsByTagName('span')[0];
+  if (top + 100 < viewportHeight) {
     let bottom = rect.bottom;
-    // Calculate opacity based on scroll position
     let midViewport = viewportHeight / 2 + 96;
     let distanceToMid = Math.min(
       (midViewport - (top + (bottom - top) / 2)) * -1,
@@ -41,9 +31,9 @@ window.addEventListener('scroll', () => {
       calculatedValue =
         minValue + (maxValue - minValue) * (1 - distanceToMid / midViewport);
     }
-
-    let span = aboutMeP.getElementsByTagName('span')[0];
     span.style.backgroundSize = calculatedValue + '% 100%';
+  } else {
+    span.style.backgroundSize = '0% 100%';
   }
 });
 //------ PROJECTS SECTION ------//
